@@ -9,6 +9,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logoRef = useRef<HTMLAnchorElement>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (logoRef.current) {
@@ -19,20 +20,34 @@ export default function Header() {
   }, []);
 
   useLayoutEffect(() => {
-    const tl = gsap.timeline({ repeat: -1 });
+    // 이전 타임라인 정리
+    if (timelineRef.current) {
+      timelineRef.current.kill();
+    }
 
-    // 로고 텍스트 애니메이션
-    tl.to(logoRef.current, {
-      color: "#E5D5B5", // 밝은 골드
-      duration: 2,
-      ease: "power2.inOut",
-    }).to(logoRef.current, {
-      color: "#C5A572", // 기본 골드
-      duration: 2,
-      ease: "power2.inOut",
-    });
+    // 새 타임라인 생성
+    timelineRef.current = gsap.timeline({ repeat: -1 });
 
-    return () => tl.kill();
+    if (logoRef.current && timelineRef.current) {
+      timelineRef.current
+        .to(logoRef.current, {
+          color: "#E5D5B5", // 밝은 골드
+          duration: 2,
+          ease: "power2.inOut",
+        })
+        .to(logoRef.current, {
+          color: "#C5A572", // 기본 골드
+          duration: 2,
+          ease: "power2.inOut",
+        });
+    }
+
+    // cleanup 함수
+    return () => {
+      if (timelineRef.current) {
+        timelineRef.current.kill();
+      }
+    };
   }, []);
 
   useEffect(() => {

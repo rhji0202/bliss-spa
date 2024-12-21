@@ -2,7 +2,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import JsonLd from "@/components/SEO/JsonLd";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -11,6 +11,11 @@ const cormorant = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-cormorant",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Bliss Nail Spa & Lash | Nail Care & Beauty Services in Norwalk, CT",
@@ -41,10 +46,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
   },
   verification: {
     google: "verification_token", // Google Search Console 인증 토큰
