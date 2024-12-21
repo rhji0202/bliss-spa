@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
+  output: "export",
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -13,9 +13,6 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ["lucide-react"],
-  },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
   },
 };
 
