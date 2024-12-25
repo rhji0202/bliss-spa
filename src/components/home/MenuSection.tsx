@@ -1,107 +1,24 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
-const menuCategories = [
-  {
-    title: "Manicure",
-    items: [
-      {
-        name: "Classic Manicure",
-        description: "Nail shaping, cuticle care, hand massage, and polish",
-        price: "25",
-      },
-      {
-        name: "Gel Manicure",
-        description: "Long-lasting gel polish with classic manicure service",
-        price: "35",
-      },
-      {
-        name: "Luxury Spa Manicure",
-        description:
-          "Classic manicure with extended massage and paraffin treatment",
-        price: "45",
-      },
-    ],
-  },
-  {
-    title: "Pedicure",
-    items: [
-      {
-        name: "Classic Pedicure",
-        description: "Foot soak, nail care, callus removal, and polish",
-        price: "35",
-      },
-      {
-        name: "Gel Pedicure",
-        description: "Classic pedicure with long-lasting gel polish",
-        price: "45",
-      },
-      {
-        name: "Luxury Spa Pedicure",
-        description: "Deluxe treatment with hot stone massage and paraffin",
-        price: "65",
-      },
-    ],
-  },
-  {
-    title: "Eyelash Extensions",
-    items: [
-      {
-        name: "Classic Set",
-        description: "Natural-looking lash extensions, one extension per lash",
-        price: "120",
-      },
-      {
-        name: "Volume Set",
-        description: "Fuller look with multiple extensions per natural lash",
-        price: "180",
-      },
-      {
-        name: "Refill",
-        description: "Maintenance service for existing extensions",
-        price: "65",
-      },
-    ],
-  },
-];
+import { useEffect, useState } from "react";
+import { MenuCategories, MenuCategory } from "@/types/menu";
 
 export default function MenuSection() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const [menuData, setMenuData] = useState<MenuCategories>([]);
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      const categories = gsap.utils.toArray<HTMLElement>(".menu-category");
-
-      categories.forEach((category, i) => {
-        gsap.from(category, {
-          scrollTrigger: {
-            trigger: category,
-            start: "top bottom-=100",
-            toggleActions: "play none none reverse",
-          },
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          delay: i * 0.2,
-        });
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
+  useEffect(() => {
+    fetch("/data/menuData.json")
+      .then((res) => res.json())
+      .then((data) => setMenuData(data.menuCategories));
   }, []);
 
   return (
-    <section id="menu" ref={sectionRef} className="py-20 bg-white">
+    <section id="menu" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16">Our Menu</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {menuCategories.map((category, index) => (
+          {menuData.map((category: MenuCategory, index) => (
             <div
               key={index}
               className="menu-category bg-gray-50 rounded-lg p-6 shadow-lg"

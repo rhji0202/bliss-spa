@@ -36,26 +36,44 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/services"
-                  className="hover:text-pink-500 transition-colors"
+                  href="#home"
+                  className="hover:text-brand-gold transition-colors"
                 >
-                  Our Services
+                  Home
                 </a>
               </li>
               <li>
                 <a
-                  href="/booking"
-                  className="hover:text-pink-500 transition-colors"
+                  href="#services"
+                  className="hover:text-brand-gold transition-colors"
                 >
-                  Book Appointment
+                  Services
                 </a>
               </li>
               <li>
                 <a
-                  href="/contact"
-                  className="hover:text-pink-500 transition-colors"
+                  href="#menu"
+                  className="hover:text-brand-gold transition-colors"
                 >
-                  Gift Certificates
+                  Menu
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className="hover:text-brand-gold transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://clients.mangomint.com/gift-cards/207987"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-gold transition-colors"
+                >
+                  Gift Certificate
                 </a>
               </li>
             </ul>

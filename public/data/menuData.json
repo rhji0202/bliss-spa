@@ -1,0 +1,259 @@
+{
+  "menuCategories": [
+    {
+      "title": "Manicure",
+      "items": [
+        {
+          "name": "Regular Manicure",
+          "description": "Basic nail care service with regular polish",
+          "price": "14"
+        },
+        {
+          "name": "French Manicure",
+          "description": "Classic french tip design with regular polish",
+          "price": "19"
+        },
+        {
+          "name": "Gel Manicure",
+          "description": "Long-lasting gel polish with basic nail care",
+          "price": "35"
+        },
+        {
+          "name": "Spa Manicure",
+          "description": "Luxurious treatment with extended massage",
+          "price": "35"
+        },
+        {
+          "name": "Powder Gel",
+          "description": "Durable powder gel application",
+          "price": "45"
+        },
+        {
+          "name": "U.V Full Set",
+          "description": "Complete UV gel nail enhancement",
+          "price": "85"
+        },
+        {
+          "name": "U.V Fill-In",
+          "description": "Maintenance for UV gel nails",
+          "price": "55"
+        },
+        {
+          "name": "Tips Powder Full Set",
+          "description": "Full set with powder application",
+          "price": "60"
+        },
+        {
+          "name": "Design",
+          "description": "Custom nail art and design",
+          "price": "10"
+        }
+      ]
+    },
+    {
+      "title": "Pedicure",
+      "items": [
+        {
+          "name": "Regular Pedicure",
+          "description": "Basic foot care with regular polish",
+          "price": "30"
+        },
+        {
+          "name": "Gel Pedicure",
+          "description": "Long-lasting gel polish pedicure",
+          "price": "50"
+        },
+        {
+          "name": "Green Tea Spa",
+          "description": "Relaxing spa pedicure with green tea benefits",
+          "price": "65"
+        },
+        {
+          "name": "Lavender Spa",
+          "description": "Calming lavender spa pedicure treatment",
+          "price": "65"
+        },
+        {
+          "name": "Pomegranate Spa",
+          "description": "Luxurious pomegranate spa pedicure",
+          "price": "70"
+        },
+        {
+          "name": "Blueberry Spa",
+          "description": "Refreshing blueberry spa pedicure",
+          "price": "70"
+        },
+        {
+          "name": "Shea Butter Spa",
+          "description": "Moisturizing shea butter spa treatment",
+          "price": "85"
+        },
+        {
+          "name": "Pure Pearl Spa",
+          "description": "Luxurious pearl spa pedicure",
+          "price": "85"
+        },
+        {
+          "name": "Golden Spa",
+          "description": "Premium golden spa pedicure treatment",
+          "price": "95"
+        }
+      ]
+    },
+    {
+      "title": "Eyelash Extensions",
+      "items": [
+        {
+          "name": "Classic Full Set",
+          "description": "Natural-looking lash extensions, one extension per lash",
+          "price": "120"
+        },
+        {
+          "name": "Classic Fill-In (2 Weeks)",
+          "description": "Maintenance service for classic extensions",
+          "price": "80"
+        },
+        {
+          "name": "Hybrid Full Set",
+          "description": "Mix of classic and volume techniques",
+          "price": "130"
+        },
+        {
+          "name": "Hybrid Fill-In (2 Weeks)",
+          "description": "Maintenance for hybrid extensions",
+          "price": "90"
+        },
+        {
+          "name": "Volume Full Set",
+          "description": "Fuller look with multiple extensions per natural lash",
+          "price": "150"
+        },
+        {
+          "name": "Volume Fill-In (2 Weeks)",
+          "description": "Maintenance service for volume extensions",
+          "price": "90"
+        }
+      ]
+    },
+    {
+      "title": "Waxing",
+      "items": [
+        {
+          "name": "Eyebrow",
+          "description": "Precise eyebrow shaping and grooming",
+          "price": "15"
+        },
+        {
+          "name": "Lip",
+          "description": "Upper or lower lip hair removal",
+          "price": "10"
+        },
+        {
+          "name": "Chin",
+          "description": "Chin area hair removal",
+          "price": "15"
+        },
+        {
+          "name": "Cheek",
+          "description": "Facial cheek area hair removal",
+          "price": "20"
+        },
+        {
+          "name": "Full Face",
+          "description": "Complete facial hair removal treatment",
+          "price": "50"
+        },
+        {
+          "name": "Under Arm",
+          "description": "Underarm hair removal",
+          "price": "15"
+        },
+        {
+          "name": "Half Arm",
+          "description": "Upper or lower arm hair removal",
+          "price": "25"
+        },
+        {
+          "name": "Full Arm",
+          "description": "Complete arm hair removal",
+          "price": "45"
+        },
+        {
+          "name": "Half Leg",
+          "description": "Lower or upper leg hair removal",
+          "price": "30"
+        },
+        {
+          "name": "Full Leg",
+          "description": "Complete leg hair removal",
+          "price": "60"
+        },
+        {
+          "name": "Bikini",
+          "description": "Basic bikini line hair removal",
+          "price": "25"
+        },
+        {
+          "name": "Brazilian",
+          "description": "Complete bikini area hair removal",
+          "price": "55"
+        },
+        {
+          "name": "Back / Chest",
+          "description": "Back or chest hair removal",
+          "price": "55"
+        }
+      ]
+    },
+    {
+      "title": "Facial",
+      "items": [
+        {
+          "name": "Mini Facial",
+          "description": "Quick refreshing facial treatment",
+          "price": "65"
+        },
+        {
+          "name": "Deep Cleansing Facial",
+          "description": "Thorough cleansing and purifying treatment",
+          "price": "85"
+        },
+        {
+          "name": "Hydra Facial",
+          "description": "Hydrating and rejuvenating facial treatment",
+          "price": "85"
+        },
+        {
+          "name": "Collagen Facial",
+          "description": "Anti-aging treatment with collagen boost",
+          "price": "160"
+        }
+      ]
+    },
+    {
+      "title": "Massage",
+      "items": [
+        {
+          "name": "Chair Massage 10 mins",
+          "description": "Quick tension relief massage",
+          "price": "13"
+        },
+        {
+          "name": "Swedish Massage 1 hr (Room)",
+          "description": "Classic full-body relaxation massage",
+          "price": "80"
+        },
+        {
+          "name": "Deep Tissue 1 hr (Room)",
+          "description": "Intensive therapeutic massage",
+          "price": "90"
+        },
+        {
+          "name": "Aromatherapy 1 hr (Room)",
+          "description": "Relaxing massage with essential oils",
+          "price": "100"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import { Inter, Cormorant_Garamond, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -10,6 +10,12 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-cormorant",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair",
 });
 
 export const viewport: Viewport = {
@@ -71,7 +77,9 @@ export default function RootLayout({
         />
         <script src="https://booking.mangomint.com/app.js" async defer />
       </head>
-      <body className={`${inter.className} ${cormorant.variable}`}>
+      <body
+        className={`${inter.className} ${cormorant.variable} ${playfair.variable}`}
+      >
         <Header />
         <main className="min-h-screen pt-20">{children}</main>
         <Footer />

@@ -73,9 +73,14 @@ export default function ContactSection() {
                 Give the gift of relaxation and beauty. Gift certificates are
                 available for all our services.
               </p>
-              <button className="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors">
+              <a
+                href="https://clients.mangomint.com/gift-cards/207987"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors"
+              >
                 Purchase Gift Card
-              </button>
+              </a>
             </div>
           </div>
 

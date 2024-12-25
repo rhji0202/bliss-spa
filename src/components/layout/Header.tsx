@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, useLayoutEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import gsap from "gsap";
+import Image from "next/image";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -86,9 +87,19 @@ export default function Header() {
           <Link
             href="/"
             ref={logoRef}
-            className="text-2xl font-bold text-[#C5A572] relative group font-cormorant tracking-wider"
+            className="relative group flex items-center gap-3"
           >
-            <span className="relative z-10">Bliss Nail Spa & Lash</span>
+            <Image
+              src="/images/logo.png"
+              alt="Bliss Nail Spa & Lash Logo"
+              width={50}
+              height={50}
+              className="object-cover"
+              priority
+            />
+            <span className="text-2xl font-bold text-[#C5A572] font-playfair tracking-wider">
+              Nail Spa & Lash
+            </span>
             <span className="absolute inset-0 bg-white/10 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
 
@@ -118,6 +129,14 @@ export default function Header() {
             >
               Contact
             </button>
+            <a
+              href="https://clients.mangomint.com/gift-cards/207987"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand-gold transition-colors"
+            >
+              Gift Certificate
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -167,6 +186,14 @@ export default function Header() {
             >
               Contact
             </button>
+            <a
+              href="https://clients.mangomint.com/gift-cards/207987"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-2 hover:text-brand-gold transition-colors text-left"
+            >
+              Gift Certificate
+            </a>
           </nav>
         </div>
       </div>

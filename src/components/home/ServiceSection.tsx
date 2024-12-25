@@ -24,7 +24,7 @@ const services = [
   {
     title: "Waxing",
     description: "Professional waxing services for smooth, beautiful skin",
-    image: "/images/services/waxing.jpeg",
+    image: "/images/services/waxing.jpg",
     width: 800,
     height: 600,
   },
