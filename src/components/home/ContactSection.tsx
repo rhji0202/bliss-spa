@@ -10,8 +10,42 @@ const businessHours = [
 ];
 
 export default function ContactSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // 컨택트 정보 애니메이션
+      gsap.from(".contact-info", {
+        scrollTrigger: {
+          trigger: ".contact-info",
+          start: "top bottom-=100",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        x: -50,
+        duration: 0.8,
+      });
+
+      // 지도 애니메이션
+      gsap.from(".map-container", {
+        scrollTrigger: {
+          trigger: ".map-container",
+          start: "top bottom-=100",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        x: 50,
+        duration: 0.8,
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="py-20 bg-[var(--section-bg)]">
+    <section ref={sectionRef} className="py-20 bg-[var(--section-bg)]">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-[var(--section-text)]">
           Contact Us
@@ -19,7 +53,7 @@ export default function ContactSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="contact-info space-y-8">
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-[var(--section-text)]">
                 Visit Us
@@ -58,7 +92,7 @@ export default function ContactSection() {
           </div>
 
           {/* Map */}
-          <div className="h-[400px] rounded-lg overflow-hidden shadow-lg">
+          <div className="map-container h-[400px] rounded-lg overflow-hidden shadow-lg">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.2755401193674!2d-73.4183894!3d41.0923977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e81c04d7e3aa2b%3A0x6b05d72156d10d4f!2s408%20Westport%20Ave%2C%20Norwalk%2C%20CT%2006851!5e0!3m2!1sen!2sus!4v1710811046246!5m2!1sen!2sus"
               width="100%"

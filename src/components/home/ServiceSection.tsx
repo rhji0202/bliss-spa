@@ -38,8 +38,35 @@ const services = [
 ];
 
 export default function ServiceSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // 서비스 카드 애니메이션
+      const cards = gsap.utils.toArray<HTMLElement>(".service-card");
+
+      cards.forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom-=100",
+            toggleActions: "play none none reverse",
+          },
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          delay: i * 0.2,
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="py-20 bg-[var(--section-bg)]">
+    <section ref={sectionRef} className="py-20 bg-[var(--section-bg)]">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-[var(--section-text)]">
           Our Services
@@ -49,7 +76,7 @@ export default function ServiceSection() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-lg shadow-lg bg-[var(--section-bg)] hover:shadow-xl transition-shadow duration-300"
+              className="service-card group relative overflow-hidden rounded-lg shadow-lg bg-[var(--section-bg)] hover:shadow-xl transition-shadow duration-300"
             >
               <div className="relative h-64 w-full">
                 <Image
@@ -70,19 +97,6 @@ export default function ServiceSection() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-12 text-center">
-          <button
-            onClick={() => {
-              if (window.Mangomint?.showBookingWidget) {
-                window.Mangomint.showBookingWidget();
-              }
-            }}
-            className="bg-brand-gold text-white px-8 py-3 rounded-full hover:bg-brand-gold/90 transition-colors text-lg font-medium"
-          >
-            Book Now
-          </button>
         </div>
       </div>
     </section>
