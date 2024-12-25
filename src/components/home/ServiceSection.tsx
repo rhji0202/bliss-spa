@@ -38,59 +38,51 @@ const services = [
 ];
 
 export default function ServiceSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>(".service-card");
-
-      cards.forEach((card, i) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom-=100",
-            toggleActions: "play none none reverse",
-          },
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          delay: i * 0.2,
-        });
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="py-20 bg-gray-50">
+    <section className="py-20 bg-[var(--section-bg)]">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 text-[var(--section-text)]">
+          Our Services
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
-              className="service-card bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              className="group relative overflow-hidden rounded-lg shadow-lg bg-[var(--section-bg)] hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="relative aspect-[4/3] w-full">
+              <div className="relative h-64 w-full">
                 <Image
                   src={service.image}
                   alt={service.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover"
-                  priority={index < 2}
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300" />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
+                <h3 className="text-2xl font-semibold text-white mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-white/90 text-sm">{service.description}</p>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <button
+            onClick={() => {
+              if (window.Mangomint?.showBookingWidget) {
+                window.Mangomint.showBookingWidget();
+              }
+            }}
+            className="bg-brand-gold text-white px-8 py-3 rounded-full hover:bg-brand-gold/90 transition-colors text-lg font-medium"
+          >
+            Book Now
+          </button>
         </div>
       </div>
     </section>

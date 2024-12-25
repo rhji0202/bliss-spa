@@ -37,7 +37,7 @@ export default function Header() {
           ease: "power2.inOut",
         })
         .to(logoRef.current, {
-          color: "#C5A572", // 기본 골드
+          color: "#C5A572", // 기본 ��드
           duration: 2,
           ease: "power2.inOut",
         });
@@ -79,7 +79,9 @@ export default function Header() {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-white/80 backdrop-blur-sm"
+        isScrolled
+          ? "bg-[var(--header-bg)] shadow-md"
+          : "bg-[var(--header-bg)] backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -107,36 +109,36 @@ export default function Header() {
           <nav className="hidden md:flex space-x-8">
             <button
               onClick={() => scrollToSection("home")}
-              className="hover:text-brand-gold transition-colors"
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors"
             >
               Home
             </button>
             <button
               onClick={() => scrollToSection("services")}
-              className="hover:text-brand-gold transition-colors"
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors"
             >
               Services
             </button>
             <button
               onClick={() => scrollToSection("menu")}
-              className="hover:text-brand-gold transition-colors"
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors"
             >
               Menu
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="hover:text-brand-gold transition-colors"
-            >
-              Contact
             </button>
             <a
               href="https://clients.mangomint.com/gift-cards/207987"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand-gold transition-colors"
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors"
             >
               Gift Certificate
             </a>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors"
+            >
+              Contact
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -164,36 +166,36 @@ export default function Header() {
           <nav className="flex flex-col space-y-4 pb-6">
             <button
               onClick={() => scrollToSection("home")}
-              className="py-2 hover:text-brand-gold transition-colors text-left"
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors text-left"
             >
               Home
             </button>
             <button
               onClick={() => scrollToSection("services")}
-              className="py-2 hover:text-brand-gold transition-colors text-left"
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors text-left"
             >
               Services
             </button>
             <button
               onClick={() => scrollToSection("menu")}
-              className="py-2 hover:text-brand-gold transition-colors text-left"
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors text-left"
             >
               Menu
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="py-2 hover:text-brand-gold transition-colors text-left"
-            >
-              Contact
             </button>
             <a
               href="https://clients.mangomint.com/gift-cards/207987"
               target="_blank"
               rel="noopener noreferrer"
-              className="py-2 hover:text-brand-gold transition-colors text-left"
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors text-left"
             >
               Gift Certificate
             </a>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="text-[var(--header-text)] hover:text-brand-gold transition-colors text-left"
+            >
+              Contact
+            </button>
           </nav>
         </div>
       </div>
