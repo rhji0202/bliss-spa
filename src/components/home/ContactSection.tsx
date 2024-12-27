@@ -27,18 +27,6 @@ export default function ContactSection() {
         x: -50,
         duration: 0.8,
       });
-
-      // 지도 애니메이션
-      gsap.from(".map-container", {
-        scrollTrigger: {
-          trigger: ".map-container",
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse",
-        },
-        opacity: 0,
-        x: 50,
-        duration: 0.8,
-      });
     }, sectionRef);
 
     return () => ctx.revert();
