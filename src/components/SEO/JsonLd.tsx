@@ -3,9 +3,9 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "NailSalon",
     name: "Bliss Nail Spa & Lash",
-    image: "https://blissnailspalash.com/images/hero-bg.jpeg",
-    "@id": "https://blissnailspalash.com",
-    url: "https://blissnailspalash.com",
+    image: "http://www.bliss-ct.com/images/hero-bg.jpeg",
+    "@id": "http://www.bliss-ct.com",
+    url: "http://www.bliss-ct.com",
     telephone: "203-846-2777",
     address: {
       "@type": "PostalAddress",
