@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Bliss Nail Spa & Lash | Luxury Nail Care & Beauty Services",
     description:
       "Experience luxury nail care, eyelash extensions, and spa services in Norwalk, CT. Book your appointment today!",
-    url: "http://www.bliss-ct.com",
+    url: "https://www.bliss-ct.com",
     siteName: "Bliss Nail Spa & Lash",
     locale: "en_US",
     type: "website",
