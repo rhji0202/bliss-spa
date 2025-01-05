@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Metadata, Viewport } from "next";
 import JsonLd from "@/components/SEO/JsonLd";
+import FloatingButton from "@/components/layout/FloatingButton";
 
 const inter = Inter({ subsets: ["latin"] });
 const cormorant = Cormorant_Garamond({
@@ -82,6 +83,7 @@ export default function RootLayout({
       >
         <Header />
         <main className="min-h-screen pt-20">{children}</main>
+        <FloatingButton />
         <Footer />
       </body>
     </html>
