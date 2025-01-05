@@ -44,7 +44,7 @@ export default function ContactSection() {
           <div className="contact-info space-y-8">
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-[var(--section-text)]">
-                Visit Us
+                Location
               </h3>
               <address className="not-italic text-[var(--section-text)] space-y-2">
                 <p>408 Westport Ave</p>
