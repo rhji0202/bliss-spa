@@ -8,12 +8,13 @@ interface Event {
   discount: string;
   originalPrice?: number;
   discountedPrice?: number;
-  serviceType: 'eyelash' | 'head-spa';
+  serviceType: "eyelash" | "head-spa";
   image: string;
   badge: string;
   cta: string;
   validUntil?: string;
   isActive: boolean;
+  isHot?: boolean;
 }
 
 interface EventCardProps {
@@ -30,7 +31,7 @@ export default function EventCard({ event }: EventCardProps) {
 
   const handleBooking = () => {
     if (!isClient) return;
-    
+
     if (isMangomintReady) {
       window.Mangomint?.showBookingWidget();
     } else {
@@ -40,7 +41,14 @@ export default function EventCard({ event }: EventCardProps) {
 
   return (
     <div className="event-card group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
-      <div className="relative h-48 bg-gradient-to-r from-pink-500 to-purple-600">
+      <div
+        className="relative h-48 bg-gradient-to-r from-pink-500 to-purple-600"
+        style={event.image ? {
+          backgroundImage: `url(${event.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        } : undefined}
+      >
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-white text-center p-6">
@@ -48,19 +56,21 @@ export default function EventCard({ event }: EventCardProps) {
             <div className="text-lg font-semibold">{event.badge}</div>
           </div>
         </div>
-        
+
         {/* 배지 */}
-        <div className="absolute top-4 right-4">
-          <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-            HOT DEAL
-          </span>
-        </div>
+        {event.isHot && (
+          <div className="absolute top-4 right-4">
+            <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+              HOT DEAL
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="p-6">
         <h3 className="text-2xl font-bold text-gray-900 mb-2">{event.title}</h3>
         <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
-        
+
         <div className="flex items-center justify-between mb-4">
           {event.originalPrice && event.discountedPrice && (
             <div className="flex items-center space-x-3">

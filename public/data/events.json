@@ -8,11 +8,12 @@
       "originalPrice": 80,
       "discountedPrice": 40,
       "serviceType": "eyelash",
-      "image": "/images/events/eyelash-event.jpg",
+      "image": "",
       "badge": "First Time Customer Special",
       "cta": "Book Eyelash Extensions",
       "validUntil": "2025-12-31",
-      "isActive": true
+      "isActive": true,
+      "isHot": true
     },
     {
       "id": "head-spa-50-off",
@@ -22,11 +23,12 @@
       "originalPrice": 120,
       "discountedPrice": 60,
       "serviceType": "head-spa",
-      "image": "/images/events/head-spa-event.jpg",
+      "image": "",
       "badge": "First Time Customer Special",
       "cta": "Book Head Spa",
       "validUntil": "2025-12-31",
-      "isActive": true
+      "isActive": true,
+      "isHot": true
     }
   ],
   "eventBannerData": {

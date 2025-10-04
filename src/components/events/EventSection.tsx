@@ -12,7 +12,7 @@ interface Event {
   discount: string;
   originalPrice?: number;
   discountedPrice?: number;
-  serviceType: 'eyelash' | 'head-spa';
+  serviceType: "eyelash" | "head-spa";
   image: string;
   badge: string;
   cta: string;
@@ -28,12 +28,12 @@ export default function EventSection() {
 
   useEffect(() => {
     setIsClient(true);
-    
+
     // Load events from JSON
-    fetch('/data/events.json')
-      .then(response => response.json())
-      .then(data => setEvents(data.events))
-      .catch(error => console.error('Error loading events:', error));
+    fetch("/data/events.json")
+      .then((response) => response.json())
+      .then((data) => setEvents(data.events))
+      .catch((error) => console.error("Error loading events:", error));
   }, []);
 
   useEffect(() => {
@@ -83,27 +83,34 @@ export default function EventSection() {
   }, [isClient]);
 
   return (
-    <section id="events" className="py-20 bg-gradient-to-br from-gray-50 to-pink-50">
+    <section
+      id="events"
+      className="py-20 bg-gradient-to-br from-gray-50 to-pink-50"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="event-section-title text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Limited Time Offers
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Special discounts for first-time customers! Experience our premium services at an incredible value.
+            Special discounts for first-time customers! Experience our premium
+            services at an incredible value.
           </p>
         </div>
 
         <div className="event-cards-container grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {events.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
+          {events
+            .filter((event) => event.isActive)
+            .map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
         </div>
 
         <div className="text-center mt-12">
           <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-lg inline-block">
             <p className="text-yellow-700 font-semibold">
-              ✨ Offer valid for first-time customers only. Cannot be combined with other promotions.
+              ✨ Offer valid for first-time customers only. Cannot be combined
+              with other promotions.
             </p>
           </div>
         </div>
