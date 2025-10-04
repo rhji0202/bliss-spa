@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, useLayoutEffect, useRef } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, Music } from "lucide-react";
 import gsap from "gsap";
 import Image from "next/image";
 
@@ -106,7 +106,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("home")}
               className="text-[var(--header-text)] hover:text-brand-gold transition-colors"
@@ -139,6 +139,28 @@ export default function Header() {
             >
               Contact
             </button>
+            
+            {/* Social Media Links */}
+            <div className="flex items-center space-x-4 ml-4">
+              <a
+                href="https://www.instagram.com/bliss.spa.lash?igsh=MWlubjFwanZ2MXAxbw%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--header-text)] hover:text-brand-gold transition-colors p-2"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@bliss.spa.lash?_t=ZP-90FxhdGGf2U&_r=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--header-text)] hover:text-brand-gold transition-colors p-2"
+                aria-label="TikTok"
+              >
+                <Music className="w-5 h-5" />
+              </a>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -196,6 +218,28 @@ export default function Header() {
             >
               Contact
             </button>
+            
+            {/* Mobile Social Media Links */}
+            <div className="flex items-center space-x-4 pt-4">
+              <a
+                href="https://www.instagram.com/bliss.spa.lash?igsh=MWlubjFwanZ2MXAxbw%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--header-text)] hover:text-brand-gold transition-colors p-2"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@bliss.spa.lash?_t=ZP-90FxhdGGf2U&_r=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--header-text)] hover:text-brand-gold transition-colors p-2"
+                aria-label="TikTok"
+              >
+                <Music className="w-6 h-6" />
+              </a>
+            </div>
           </nav>
         </div>
       </div>

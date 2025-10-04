@@ -100,7 +100,7 @@ export default function Hero() {
       <div className="container mx-auto px-4 relative z-10 text-white">
         {/* Event Banner */}
         <div className="event-banner mb-8">
-          <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg p-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg p-4 shadow-lg transform hover:scale-105 transition-transform duration-300 opacity-90">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="text-center md:text-left mb-4 md:mb-0">
                 <div className="text-sm md:text-base font-semibold uppercase tracking-wider text-yellow-200 mb-1">
