@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Event } from "@/data/events";
 
 interface EventCardProps {
@@ -9,8 +9,15 @@ interface EventCardProps {
 
 export default function EventCard({ event }: EventCardProps) {
   const [isMangomintReady] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleBooking = () => {
+    if (!isClient) return;
+    
     if (isMangomintReady) {
       window.Mangomint?.showBookingWidget();
     } else {

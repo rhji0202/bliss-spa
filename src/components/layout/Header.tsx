@@ -9,16 +9,23 @@ import Image from "next/image";
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+    
     if (logoRef.current) {
       gsap.set(logoRef.current, {
         color: "#C5A572",
       });
     }
-  }, []);
+  }, [isClient]);
 
   useLayoutEffect(() => {
     // 이전 타임라인 정리

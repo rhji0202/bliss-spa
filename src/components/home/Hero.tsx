@@ -7,8 +7,15 @@ import { eventBannerData } from "@/data/events";
 
 export default function Hero() {
   const [isMangomintReady, setIsMangomintReady] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+    
     // Mangomint 스크립트 로드 확인
     const checkMangomint = setInterval(() => {
       if (window.Mangomint?.showBookingWidget) {
@@ -18,11 +25,10 @@ export default function Hero() {
     }, 100);
 
     return () => clearInterval(checkMangomint);
-  }, []);
+  }, [isClient]);
 
   useEffect(() => {
-    // 클라이언트 사이드에서만 실행
-    if (typeof window === 'undefined') return;
+    if (!isClient) return;
 
     // 초기 상태 설정
     gsap.set([".event-banner", ".hero-title", ".hero-description", ".hero-cta"], {
@@ -72,7 +78,7 @@ export default function Hero() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [isClient]);
 
   const handleBooking = () => {
     if (isMangomintReady) {

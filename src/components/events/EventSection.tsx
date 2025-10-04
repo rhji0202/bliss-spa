@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { events } from "@/data/events";
@@ -9,9 +9,14 @@ import EventCard from "./EventCard";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EventSection() {
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
-    // 클라이언트 사이드에서만 실행
-    if (typeof window === 'undefined') return;
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
 
     const ctx = gsap.context(() => {
       // 섹션 타이틀 애니메이션
@@ -54,7 +59,7 @@ export default function EventSection() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [isClient]);
 
   return (
     <section id="events" className="py-20 bg-gradient-to-br from-gray-50 to-pink-50">

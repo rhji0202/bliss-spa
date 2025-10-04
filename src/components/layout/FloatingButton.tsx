@@ -5,8 +5,15 @@ import { useEffect, useState } from "react";
 const FloatingButton = () => {
   const [isMangomintReady, setIsMangomintReady] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     // Mangomint 스크립트 로드 확인
     const checkMangomint = setInterval(() => {
       if (window.Mangomint?.showBookingWidget) {
@@ -33,15 +40,21 @@ const FloatingButton = () => {
       clearInterval(checkMangomint);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isClient]);
 
   const handleBooking = () => {
+    if (!isClient) return;
+    
     if (isMangomintReady) {
       window.Mangomint?.showBookingWidget();
     } else {
       window.open("https://booking.mangomint.com/blissnailspalash", "_blank");
     }
   };
+
+  if (!isClient) {
+    return <div className="fixed bottom-6 right-6 z-50" style={{ visibility: 'hidden' }} />;
+  }
 
   return (
     <div

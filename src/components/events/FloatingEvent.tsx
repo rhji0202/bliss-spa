@@ -7,9 +7,14 @@ export default function FloatingEvent() {
   const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isMangomintReady, setIsMangomintReady] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
 
     setIsMounted(true);
     
@@ -30,7 +35,7 @@ export default function FloatingEvent() {
       clearTimeout(timer);
       clearInterval(checkMangomint);
     };
-  }, []);
+  }, [isClient]);
 
   const handleBooking = () => {
     if (isMangomintReady) {
@@ -43,6 +48,10 @@ export default function FloatingEvent() {
   const handleClose = () => {
     setIsVisible(false);
   };
+
+  if (!isClient) {
+    return <div className="fixed bottom-24 right-6 z-50" style={{ visibility: 'hidden' }} />;
+  }
 
   if (!isMounted || !isVisible) return null;
 

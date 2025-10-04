@@ -71,7 +71,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-gray-200 text-center">
           <p>
-            &copy; {new Date().getFullYear()} Bliss Nail Spa & Lash. All rights
+            &copy; 2025 Bliss Nail Spa & Lash. All rights
             reserved.
           </p>
         </div>

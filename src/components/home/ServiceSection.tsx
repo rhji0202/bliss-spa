@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -45,10 +45,14 @@ const services = [
 
 export default function ServiceSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // 클라이언트 사이드에서만 실행
-    if (typeof window === 'undefined') return;
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -72,7 +76,7 @@ export default function ServiceSection() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isClient]);
 
   return (
     <section ref={sectionRef} className="py-20 bg-[var(--section-bg)]">
