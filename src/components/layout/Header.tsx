@@ -19,7 +19,7 @@ export default function Header() {
 
   useEffect(() => {
     if (!isClient) return;
-    
+
     if (logoRef.current) {
       gsap.set(logoRef.current, {
         color: "#C5A572",
@@ -146,7 +146,7 @@ export default function Header() {
             >
               Contact
             </button>
-            
+
             {/* Social Media Links */}
             <div className="flex items-center space-x-4 ml-4">
               <a
@@ -156,7 +156,14 @@ export default function Header() {
                 className="text-[var(--header-text)] hover:text-brand-gold transition-colors p-2"
                 aria-label="Instagram"
               >
-                <Instagram className="w-5 h-5" />
+                <Image
+                  src="/images/instagram.png"
+                  alt="Bliss Nail Spa & Lash Instagram"
+                  width={30}
+                  height={30}
+                  className="object-cover"
+                  priority
+                />
               </a>
               <a
                 href="https://www.tiktok.com/@bliss.spa.lash?_t=ZP-90FxhdGGf2U&_r=1"
@@ -165,7 +172,14 @@ export default function Header() {
                 className="text-[var(--header-text)] hover:text-brand-gold transition-colors p-2"
                 aria-label="TikTok"
               >
-                <Music className="w-5 h-5" />
+                <Image
+                  src="/images/tik-tok.png"
+                  alt="Bliss Nail Spa & Lash TikTok"
+                  width={30}
+                  height={30}
+                  className="object-cover"
+                  priority
+                />
               </a>
             </div>
           </nav>
@@ -225,7 +239,7 @@ export default function Header() {
             >
               Contact
             </button>
-            
+
             {/* Mobile Social Media Links */}
             <div className="flex items-center space-x-4 pt-4">
               <a

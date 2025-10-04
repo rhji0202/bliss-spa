@@ -3,16 +3,37 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { events } from "@/data/events";
 import EventCard from "./EventCard";
+
+interface Event {
+  id: string;
+  title: string;
+  description: string;
+  discount: string;
+  originalPrice?: number;
+  discountedPrice?: number;
+  serviceType: 'eyelash' | 'head-spa';
+  image: string;
+  badge: string;
+  cta: string;
+  validUntil?: string;
+  isActive: boolean;
+}
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EventSection() {
   const [isClient, setIsClient] = useState(false);
+  const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
     setIsClient(true);
+    
+    // Load events from JSON
+    fetch('/data/events.json')
+      .then(response => response.json())
+      .then(data => setEvents(data.events))
+      .catch(error => console.error('Error loading events:', error));
   }, []);
 
   useEffect(() => {

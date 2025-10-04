@@ -1,16 +1,32 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { floatingEventData } from "@/data/events";
+
+interface FloatingEventData {
+  title: string;
+  subtitle: string;
+  cta: string;
+}
 
 export default function FloatingEvent() {
   const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isMangomintReady, setIsMangomintReady] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [floatingEventData, setFloatingEventData] = useState<FloatingEventData>({
+    title: '50% OFF',
+    subtitle: 'First Visit',
+    cta: 'Book Now'
+  });
 
   useEffect(() => {
     setIsClient(true);
+    
+    // Load floating event data from JSON
+    fetch('/data/events.json')
+      .then(response => response.json())
+      .then(data => setFloatingEventData(data.floatingEventData))
+      .catch(error => console.error('Error loading floating event data:', error));
   }, []);
 
   useEffect(() => {

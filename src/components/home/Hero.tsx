@@ -3,14 +3,32 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import { eventBannerData } from "@/data/events";
+
+interface EventBannerData {
+  mainTitle: string;
+  subTitle: string;
+  description: string;
+  ctaText: string;
+}
 
 export default function Hero() {
   const [isMangomintReady, setIsMangomintReady] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [eventBannerData, setEventBannerData] = useState<EventBannerData>({
+    mainTitle: 'FIRST TIME CUSTOMER SPECIAL',
+    subTitle: 'Eyelash Extensions & Head Spa 50% OFF',
+    description: 'Experience luxury beauty services at half price for your first visit!',
+    ctaText: 'Claim Your Discount'
+  });
 
   useEffect(() => {
     setIsClient(true);
+    
+    // Load event banner data from JSON
+    fetch('/data/events.json')
+      .then(response => response.json())
+      .then(data => setEventBannerData(data.eventBannerData))
+      .catch(error => console.error('Error loading event banner data:', error));
   }, []);
 
   useEffect(() => {

@@ -1,7 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Event } from "@/data/events";
+interface Event {
+  id: string;
+  title: string;
+  description: string;
+  discount: string;
+  originalPrice?: number;
+  discountedPrice?: number;
+  serviceType: 'eyelash' | 'head-spa';
+  image: string;
+  badge: string;
+  cta: string;
+  validUntil?: string;
+  isActive: boolean;
+}
 
 interface EventCardProps {
   event: Event;
