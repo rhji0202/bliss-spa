@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -13,6 +13,7 @@ const services = [
     image: "/images/services/nails.jpg",
     width: 800,
     height: 600,
+    hasEvent: false,
   },
   {
     title: "Eyelash Extensions",
@@ -20,6 +21,8 @@ const services = [
     image: "/images/services/lash.jpg",
     width: 800,
     height: 600,
+    hasEvent: true,
+    eventText: "50% OFF First Visit",
   },
   {
     title: "Waxing",
@@ -27,20 +30,26 @@ const services = [
     image: "/images/services/waxing.jpg",
     width: 800,
     height: 600,
+    hasEvent: false,
   },
   {
-    title: "Massage",
-    description: "Relaxing massage treatments to rejuvenate body and mind",
+    title: "Head Spa & Massage",
+    description: "Relaxing head spa and massage treatments to rejuvenate body and mind",
     image: "/images/services/massage.jpeg",
     width: 800,
     height: 600,
+    hasEvent: true,
+    eventText: "50% OFF First Visit",
   },
 ];
 
 export default function ServiceSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    // 클라이언트 사이드에서만 실행
+    if (typeof window === 'undefined') return;
+
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
@@ -87,6 +96,15 @@ export default function ServiceSection() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300" />
+                
+                {/* 이벤트 배지 */}
+                {service.hasEvent && (
+                  <div className="absolute top-4 right-4">
+                    <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg animate-pulse">
+                      {service.eventText}
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="absolute inset-0 flex flex-col justify-end p-6">

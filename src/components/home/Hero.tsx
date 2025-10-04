@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import { eventBannerData } from "@/data/events";
 
 export default function Hero() {
   const [isMangomintReady, setIsMangomintReady] = useState(false);
@@ -19,9 +20,12 @@ export default function Hero() {
     return () => clearInterval(checkMangomint);
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    // 클라이언트 사이드에서만 실행
+    if (typeof window === 'undefined') return;
+
     // 초기 상태 설정
-    gsap.set([".hero-title", ".hero-description", ".hero-cta"], {
+    gsap.set([".event-banner", ".hero-title", ".hero-description", ".hero-cta"], {
       opacity: 0,
       y: 50,
     });
@@ -30,12 +34,22 @@ export default function Hero() {
       // 약간의 지연 후 애니메이션 시작
       setTimeout(() => {
         const tl = gsap.timeline();
-        tl.to(".hero-title", {
+        tl.to(".event-banner", {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           ease: "power3.out",
         })
+          .to(
+            ".hero-title",
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power3.out",
+            },
+            "-=0.3"
+          )
           .to(
             ".hero-description",
             {
@@ -84,6 +98,31 @@ export default function Hero() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10 text-white">
+        {/* Event Banner */}
+        <div className="event-banner mb-8">
+          <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg p-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="text-center md:text-left mb-4 md:mb-0">
+                <div className="text-sm md:text-base font-semibold uppercase tracking-wider text-yellow-200 mb-1">
+                  {eventBannerData.mainTitle}
+                </div>
+                <div className="text-xl md:text-2xl font-bold">
+                  {eventBannerData.subTitle}
+                </div>
+                <div className="text-sm md:text-base opacity-90 mt-1">
+                  {eventBannerData.description}
+                </div>
+              </div>
+              <button
+                onClick={handleBooking}
+                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-2 rounded-full font-bold text-sm md:text-base transition-all transform hover:scale-110 shadow-lg"
+              >
+                {eventBannerData.ctaText}
+              </button>
+            </div>
+          </div>
+        </div>
+
         <h1 className="hero-title text-5xl md:text-6xl font-bold mb-6">
           Experience Luxury at
           <br />
