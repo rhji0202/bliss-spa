@@ -9,6 +9,8 @@ export default function FloatingEvent() {
   const [isMangomintReady, setIsMangomintReady] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     setIsMounted(true);
     
     // 페이지 로드 후 3초 후에 나타나도록 설정
