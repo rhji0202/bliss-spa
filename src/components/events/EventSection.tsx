@@ -87,7 +87,7 @@ export default function EventSection() {
       id="events"
       className="py-20 bg-gradient-to-br from-gray-50 to-pink-50"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 mt-20">
         <div className="text-center mb-16">
           <h2 className="event-section-title text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Limited Time Offers
