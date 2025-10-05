@@ -9,6 +9,7 @@ interface Event {
   originalPrice?: number;
   discountedPrice?: number;
   serviceType: "eyelash" | "head-spa";
+  promotionUrl?: string;
   image: string;
   badge: string;
   cta: string;
@@ -35,7 +36,10 @@ export default function EventCard({ event }: EventCardProps) {
     if (isMangomintReady) {
       window.Mangomint?.showBookingWidget();
     } else {
-      window.open("https://booking.mangomint.com/blissnailspalash", "_blank");
+      window.open(
+        event.promotionUrl || "https://booking.mangomint.com/blissnailspalash",
+        "_blank"
+      );
     }
   };
 
@@ -43,11 +47,15 @@ export default function EventCard({ event }: EventCardProps) {
     <div className="event-card group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
       <div
         className="relative h-48 bg-gradient-to-r from-pink-500 to-purple-600"
-        style={event.image ? {
-          backgroundImage: `url(${event.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        } : undefined}
+        style={
+          event.image
+            ? {
+                backgroundImage: `url(${event.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }
+            : undefined
+        }
       >
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute inset-0 flex items-center justify-center">

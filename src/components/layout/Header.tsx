@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, useLayoutEffect, useRef } from "react";
-import { Menu, X, Instagram, Music } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import gsap from "gsap";
 import Image from "next/image";
 
@@ -249,7 +249,14 @@ export default function Header() {
                 className="text-[var(--header-text)] hover:text-brand-gold transition-colors p-2"
                 aria-label="Instagram"
               >
-                <Instagram className="w-6 h-6" />
+                <Image
+                  src="/images/instagram.png"
+                  alt="Bliss Nail Spa & Lash Instagram"
+                  width={30}
+                  height={30}
+                  className="object-cover"
+                  priority
+                />
               </a>
               <a
                 href="https://www.tiktok.com/@bliss.spa.lash?_t=ZP-90FxhdGGf2U&_r=1"
@@ -258,7 +265,14 @@ export default function Header() {
                 className="text-[var(--header-text)] hover:text-brand-gold transition-colors p-2"
                 aria-label="TikTok"
               >
-                <Music className="w-6 h-6" />
+                <Image
+                  src="/images/tik-tok.png"
+                  alt="Bliss Nail Spa & Lash TikTok"
+                  width={30}
+                  height={30}
+                  className="object-cover"
+                  priority
+                />
               </a>
             </div>
           </nav>

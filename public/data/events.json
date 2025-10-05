@@ -8,6 +8,23 @@
       "originalPrice": 80,
       "discountedPrice": 40,
       "serviceType": "eyelash",
+      "promotionUrl": "https://booking.mangomint.com/blissnailspalash?serviceId=164",
+      "image": "/images/services/lash.jpg",
+      "badge": "First Time Customer Special",
+      "cta": "Book Eyelash Extensions",
+      "validUntil": "2025-12-31",
+      "isActive": true,
+      "isHot": true
+    },
+    {
+      "id": "eyelash-50-off",
+      "title": "Eyelash Extensions",
+      "description": "Get stunning eyelash extensions with our expert technicians. Perfect for enhancing your natural beauty.",
+      "discount": "50% OFF",
+      "originalPrice": 80,
+      "discountedPrice": 40,
+      "serviceType": "eyelash",
+      "promotionUrl": "https://booking.mangomint.com/blissnailspalash?serviceId=164",
       "image": "",
       "badge": "First Time Customer Special",
       "cta": "Book Eyelash Extensions",
@@ -23,6 +40,7 @@
       "originalPrice": 120,
       "discountedPrice": 60,
       "serviceType": "head-spa",
+      "promotionUrl": "https://booking.mangomint.com/blissnailspalash?serviceId=54",
       "image": "",
       "badge": "First Time Customer Special",
       "cta": "Book Head Spa",
@@ -32,12 +50,14 @@
     }
   ],
   "eventBannerData": {
+    "showBanner": true,
     "mainTitle": "FIRST TIME CUSTOMER SPECIAL",
     "subTitle": "Eyelash Extensions & Head Spa 50% OFF",
     "description": "Experience luxury beauty services at half price for your first visit!",
     "ctaText": "Claim Your Discount"
   },
   "floatingEventData": {
+    "showBanner": true,
     "title": "50% OFF",
     "subtitle": "First Visit",
     "cta": "Book Now"

@@ -9,31 +9,36 @@ interface EventBannerData {
   subTitle: string;
   description: string;
   ctaText: string;
+  showBanner?: boolean;
 }
 
 export default function Hero() {
   const [isMangomintReady, setIsMangomintReady] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [eventBannerData, setEventBannerData] = useState<EventBannerData>({
-    mainTitle: 'FIRST TIME CUSTOMER SPECIAL',
-    subTitle: 'Eyelash Extensions & Head Spa 50% OFF',
-    description: 'Experience luxury beauty services at half price for your first visit!',
-    ctaText: 'Claim Your Discount'
+    showBanner: false,
+    mainTitle: "FIRST TIME CUSTOMER SPECIAL",
+    subTitle: "Eyelash Extensions & Head Spa 50% OFF",
+    description:
+      "Experience luxury beauty services at half price for your first visit!",
+    ctaText: "Claim Your Discount",
   });
 
   useEffect(() => {
     setIsClient(true);
-    
+
     // Load event banner data from JSON
-    fetch('/data/events.json')
-      .then(response => response.json())
-      .then(data => setEventBannerData(data.eventBannerData))
-      .catch(error => console.error('Error loading event banner data:', error));
+    fetch("/data/events.json")
+      .then((response) => response.json())
+      .then((data) => setEventBannerData(data.eventBannerData))
+      .catch((error) =>
+        console.error("Error loading event banner data:", error)
+      );
   }, []);
 
   useEffect(() => {
     if (!isClient) return;
-    
+
     // Mangomint 스크립트 로드 확인
     const checkMangomint = setInterval(() => {
       if (window.Mangomint?.showBookingWidget) {
@@ -49,10 +54,13 @@ export default function Hero() {
     if (!isClient) return;
 
     // 초기 상태 설정
-    gsap.set([".event-banner", ".hero-title", ".hero-description", ".hero-cta"], {
-      opacity: 0,
-      y: 50,
-    });
+    gsap.set(
+      [".event-banner", ".hero-title", ".hero-description", ".hero-cta"],
+      {
+        opacity: 0,
+        y: 50,
+      }
+    );
 
     const ctx = gsap.context(() => {
       // 약간의 지연 후 애니메이션 시작
@@ -106,6 +114,13 @@ export default function Hero() {
     }
   };
 
+  const scrollToEvents = () => {
+    const eventsSection = document.getElementById("events");
+    if (eventsSection) {
+      eventsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative h-[90vh] flex items-center">
       <div className="absolute inset-0 z-0">
@@ -123,7 +138,11 @@ export default function Hero() {
 
       <div className="container mx-auto px-4 relative z-10 text-white">
         {/* Event Banner */}
-        <div className="event-banner mb-8">
+        <div
+          className={`event-banner mb-8 ${
+            eventBannerData.showBanner ? "" : "hidden"
+          }`}
+        >
           <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg p-4 shadow-lg transform hover:scale-105 transition-transform duration-300 opacity-90">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="text-center md:text-left mb-4 md:mb-0">
@@ -138,7 +157,7 @@ export default function Hero() {
                 </div>
               </div>
               <button
-                onClick={handleBooking}
+                onClick={scrollToEvents}
                 className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-2 rounded-full font-bold text-sm md:text-base transition-all transform hover:scale-110 shadow-lg"
               >
                 {eventBannerData.ctaText}

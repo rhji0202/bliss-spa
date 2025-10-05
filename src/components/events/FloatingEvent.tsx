@@ -6,6 +6,7 @@ interface FloatingEventData {
   title: string;
   subtitle: string;
   cta: string;
+  showBanner: boolean;
 }
 
 export default function FloatingEvent() {
@@ -13,27 +14,32 @@ export default function FloatingEvent() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMangomintReady, setIsMangomintReady] = useState(false);
   const [isClient, setIsClient] = useState(false);
-  const [floatingEventData, setFloatingEventData] = useState<FloatingEventData>({
-    title: '50% OFF',
-    subtitle: 'First Visit',
-    cta: 'Book Now'
-  });
+  const [floatingEventData, setFloatingEventData] = useState<FloatingEventData>(
+    {
+      title: "50% OFF",
+      subtitle: "First Visit",
+      cta: "Book Now",
+      showBanner: false,
+    }
+  );
 
   useEffect(() => {
     setIsClient(true);
-    
+
     // Load floating event data from JSON
-    fetch('/data/events.json')
-      .then(response => response.json())
-      .then(data => setFloatingEventData(data.floatingEventData))
-      .catch(error => console.error('Error loading floating event data:', error));
+    fetch("/data/events.json")
+      .then((response) => response.json())
+      .then((data) => setFloatingEventData(data.floatingEventData))
+      .catch((error) =>
+        console.error("Error loading floating event data:", error)
+      );
   }, []);
 
   useEffect(() => {
     if (!isClient) return;
 
     setIsMounted(true);
-    
+
     // 페이지 로드 후 3초 후에 나타나도록 설정
     const timer = setTimeout(() => {
       setIsVisible(true);
@@ -66,13 +72,22 @@ export default function FloatingEvent() {
   };
 
   if (!isClient) {
-    return <div className="fixed bottom-24 right-6 z-50" style={{ visibility: 'hidden' }} />;
+    return (
+      <div
+        className="fixed bottom-24 right-6 z-50"
+        style={{ visibility: "hidden" }}
+      />
+    );
   }
 
   if (!isMounted || !isVisible) return null;
 
   return (
-    <div className="fixed bottom-24 right-6 z-50">
+    <div
+      className={`fixed bottom-24 right-6 z-50 ${
+        floatingEventData.showBanner ? "" : "hidden"
+      }`}
+    >
       <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg shadow-2xl border-2 border-white transform hover:scale-105 transition-all duration-300">
         {/* 닫기 버튼 */}
         <button
@@ -81,7 +96,7 @@ export default function FloatingEvent() {
         >
           ×
         </button>
-        
+
         {/* 이벤트 내용 */}
         <div className="p-4 text-white text-center">
           <div className="font-bold text-lg mb-1">
@@ -97,7 +112,7 @@ export default function FloatingEvent() {
             {floatingEventData.cta}
           </button>
         </div>
-        
+
         {/* 꼬리표 */}
         <div className="absolute -bottom-2 right-4 w-4 h-4 bg-gradient-to-r from-pink-500 to-purple-600 transform rotate-45 border-r-2 border-b-2 border-white"></div>
       </div>
